@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Dados</title>
+</head>
+<body>
+  <h1>Detalhes</h1>
+  <p>ID: <span th:text="${professor.id}"></span></p>
+  <p>Nome: <span th:text="${professor.nome}"></span></p>
+  <p>Salário: <span th:text="${professor.salario}"></span></p>
+  <p>Status: <span th:text="${professor.status}"></span></p>
+
+
+  <div class="error"></div>
+</body>
+</html>
