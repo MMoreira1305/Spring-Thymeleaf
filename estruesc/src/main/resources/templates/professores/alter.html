@@ -1,34 +1,101 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Alteração de Dados</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Alteração de Dados</title>
+    </head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<h1>Alteração de dados</h1>
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+        }
 
-<form th:action="@{/professores/{id}/edit(id=${professor.id})}" th:object="${professor}" method="POST">
-    <input type="hidden" th:field=${professor.id}>
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-    <label for="nome">Nome:</label>
-    <input th:field="${professor.nome}" type="text" id="nome" name="nome" maxlength=30 required><br><br>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
 
-    <label for="salario">Salário:</label>
-    <input th:field="${professor.salario}" type="number" id="salario" name="salario" required><br><br>
+        label {
+            font-weight: bold;
+            color: #555;
+        }
 
-    <label for="status">Status:</label>
-    <select th:field="${professor.status}" id="status" name="status">
-        <option value="ATIVO">ATIVO</option>
-        <option value="INATIVO">INATIVO</option>
-        <option value="APOSENTADO">APOSENTADO</option>
-        <option value="AFASTADO">AFASTADO</option>
-    </select><br><br>
+        input, select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
 
-    <input type="hidden" name="_method" value="put"/>
-    <input type="submit" value="Salvar">
-</form>
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-<div class="error"></div>
-</body>
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h1>Alteração de Dados</h1>
+
+            <form th:action="@{/professores/{id}/edit(id=${professor.id})}" th:object="${professor}" method="POST">
+                <input type="hidden" th:field=${professor.id}>
+
+                <label for="nome">Nome:</label>
+                <input th:field="${professor.nome}" type="text" id="nome" name="nome" maxlength="30" required>
+
+                <label for="salario">Salário:</label>
+                <input th:field="${professor.salario}" type="number" id="salario" name="salario" required>
+
+                <label for="status">Status:</label>
+                <select th:field="${professor.status}" id="status" name="status">
+                    <option value="ATIVO">ATIVO</option>
+                    <option value="INATIVO">INATIVO</option>
+                    <option value="APOSENTADO">APOSENTADO</option>
+                    <option value="AFASTADO">AFASTADO</option>
+                </select>
+
+                <input type="hidden" name="_method" value="put"/>
+                <input type="submit" value="Salvar">
+            </form>
+
+            <div class="error"></div>
+        </div>
+    </body>
 </html>

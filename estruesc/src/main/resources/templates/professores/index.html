@@ -3,101 +3,103 @@
 
 <style>
     body {
-        background: #007bff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
         margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    #new-prof {
-        color: black;
+        padding: 20px;
     }
 
     .container {
-        margin-top: 50px; /* Espaço acima da tabela */
-    }
-
-    .table-container {
-        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
     }
 
     .btn-new-prof {
-        background-color: #f2f2f2;
-        color: black;
-        margin-bottom: 20px; /* Espaço abaixo do botão */
-    }
-
-    table {
-        width: 100%;
-        max-width: 800px; /* Largura máxima da tabela */
-        margin: 0 auto; /* Centralizar a tabela horizontalmente */
-        background-color: white;
-        border-collapse: collapse;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    th, td {
-        padding: 8px 12px;
-        text-align: center;
-    }
-
-    th {
         background-color: #007bff;
-        color: white;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease-in-out;
     }
 
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    a {
-        color: #007bff;
+    .btn-new-prof a {
         text-decoration: none;
+        color: #fff;
     }
 
-    a:hover {
+    .btn-new-prof:hover {
+        background-color: #0056b3;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table th, .table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .table a:hover {
         text-decoration: underline;
     }
 </style>
-
+</head>
 <body>
-
-<div class="container mb-4">
-
-</div>
-
-<div class="container mt-4">
+<div class="container">
     <div class="row">
         <div class="col-12">
             <button class="btn-new-prof"><a id="new-prof" href="/professores/cadastro">Novo Professor</a></button>
-            <table class="table table-hover">
+            <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Salário</th>
-                    <th scope="col">Status</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Salário</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:action="@{/professores/{id}}" th:each="professor : ${professores}">
-                    <th class="col-1" scope="row" th:text="${professor.getId()}">ID</th>
-                    <td class="col-4" th:text="${professor.nome}">Nome do Professor</td>
-                    <td class="col-2" th:text="${professor.salario}">Salário</td>
-                    <td class="col-2" th:text="${professor.status.toString()}">STATUS</td>
-                    <td class="col-1"><a th:href="@{/professores/{professorId}(professorId = ${professor.id})}">Detalhes</a></td>
-                    <td class="col-1"><a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a></td>
-                    <td class="col-1"><a th:href="@{/professores/delete(professorId = ${professor.id})}">Deletar</a></td>
+                    <td th:text="${professor.getId()}">ID</td>
+                    <td th:text="${professor.nome}">Nome do Professor</td>
+                    <td th:text="${professor.salario}">Salário</td>
+                    <td th:text="${professor.status.toString()}">STATUS</td>
+                    <td><a th:href="@{/professores/{professorId}(professorId = ${professor.id})}">Detalhes</a></td>
+                    <td><a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a></td>
+                    <td><a th:href="@{/professores/delete(professorId = ${professor.id})}">Deletar</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    
 </div>
+</body>
 
 
 
